@@ -29,8 +29,8 @@ decay_every = config.TRAIN.decay_every
 ni = int(np.sqrt(batch_size))
 bs = 1
 
-xx=20
-num_iter = 1
+xx=100
+num_iter = 100
 def train():
     ## create folders to save result images and trained model
     save_dir_ginit = "samples/{}_ginit".format(tl.global_flag['mode'])
@@ -319,7 +319,7 @@ def evaluate():
                 transformed_images.append(resize(valid_lr_img,( xx,xx)))
             
             test_x = np.stack(transformed_images)
-            print(len(transformed_images))
+          #  print(len(transformed_images))
             start_time = time.time()
             out = sess.run(net_g.outputs, {t_image: test_x})
             step_time = time.time()
@@ -330,9 +330,9 @@ def evaluate():
 
     print('%8.8f' %( (sum(total_time)   )))
     print(len(total_time))
-    #print('%8.8f' %(1/(sum(total_time)/(len(total_time)*bs)/num_iter)))
-    #print('%4.6f, %4.6f, %4.6f, %4.6f      '       %(   bs,sum(total_time),sum(total_time)/len(total_time),sum(total_time)/(len(total_time)*bs)))
-    #print('%4.6f, %4.6f, %4.6f, %4.6f    '       %(   bs,sum(total_time)/num_iter,(sum(total_time)/len(total_time))/num_iter,(sum(total_time)/(len(total_time)*bs)/num_iter)))
+    print('%8.8f' %(1/(sum(total_time)/(len(total_time)*bs)/num_iter)))
+    print('%4.6f, %4.6f, %4.6f, %4.6f      '       %(   bs,sum(total_time),sum(total_time)/len(total_time),sum(total_time)/(len(total_time)*bs)))
+    print('%4.6f, %4.6f, %4.6f, %4.6f    '       %(   bs,sum(total_time)/num_iter,(sum(total_time)/len(total_time))/num_iter,(sum(total_time)/(len(total_time)*bs)/num_iter)))
 
 
 

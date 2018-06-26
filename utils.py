@@ -25,3 +25,7 @@ def downsample_fn(x):
     x = x / (255. / 2.)
     x = x - 1.
     return x
+def pre(x):
+    x = x / (255. / 2.)
+    x = x - 1.
+    return x
